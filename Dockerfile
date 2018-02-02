@@ -30,7 +30,7 @@ RUN set -ex \
         $buildDeps \
         apt-utils \
         curl \
-        netcat
+        netcat \
     && apt-get install -yqq -t jessie-backports python-requests \
     && useradd -ms /bin/bash -d ${AIRFLOW_HOME} airflow \
     && pip uninstall setuptools \
