@@ -1,4 +1,4 @@
-FROM debian:jessie
+FROM python:3.6-slim
 
 # Never prompts the user for choices on installation/configuration of packages
 ENV DEBIAN_FRONTEND noninteractive
@@ -10,33 +10,31 @@ ENV AIRFLOW_HOME /usr/local/airflow
 
 RUN set -ex \
     && buildDeps=' \
-        python-pip \
-        python-dev \
+        python3-dev \
         libkrb5-dev \
         libsasl2-dev \
-        libxml2-dev \
         libssl-dev \
         libffi-dev \
         build-essential \
         libblas-dev \
         liblapack-dev \
-        libxslt1-dev \
-        zlib1g-dev \
+        libpq-dev \
         libmysqlclient-dev \
+        git \
     ' \
-    && echo "deb http://http.debian.net/debian jessie-backports main" >/etc/apt/sources.list.d/backports.list \
     && apt-get update -yqq \
     && apt-get install -yqq --no-install-recommends \
         $buildDeps \
+        python3-pip \
+        python3-requests \
         apt-utils \
         curl \
         netcat \
-    && apt-get install -yqq -t jessie-backports python-requests \
     && useradd -ms /bin/bash -d ${AIRFLOW_HOME} airflow \
-    && pip uninstall setuptools \
-    && pip install setuptools==33.1.1 \
-    && pip install pytz==2015.7 \
+    && python -m pip install -U pip setuptools wheel \
+    && pip install Cython \
     && pip install cryptography \
+    && pip install pytz \
     && pip install pyOpenSSL \
     && pip install ndg-httpsclient \
     && pip install pyasn1 \
