@@ -1,3 +1,4 @@
+#!/usr/bin/env bash
 TRY_LOOP=10
 
 # wait for DB
