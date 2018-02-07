@@ -3,6 +3,7 @@ TRY_LOOP=10
 
 # wait for DB
 if [ "$1" = "webserver" ] || [ "$1" = "worker" ] || [ "$1" = "scheduler" ] ; then
+  echo "Waiting until database is ready at ${MYSQL_HOST}:${MYSQL_PORT}"
   i=0
   while ! nc $MYSQL_HOST $MYSQL_PORT >/dev/null 2>&1 < /dev/null; do
     i=`expr $i + 1`
@@ -13,6 +14,7 @@ if [ "$1" = "webserver" ] || [ "$1" = "worker" ] || [ "$1" = "scheduler" ] ; the
     echo "$(date) - waiting for ${MYSQL_HOST}:${MYSQL_PORT}... $i/$TRY_LOOP"
     sleep 5
   done
+  echo "Database is ready at ${MYSQL_HOST}:${MYSQL_PORT}"
   if [ "$1" = "webserver" ]; then
     echo "Initialize database..."
     airflow initdb
