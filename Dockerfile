@@ -38,7 +38,8 @@ RUN set -ex \
     && pip install pyOpenSSL \
     && pip install ndg-httpsclient \
     && pip install pyasn1 \
-    && pip install apache-airflow[mysql,crypto]==$AIRFLOW_VERSION \
+    && pip install celery[redis] \
+    && pip install apache-airflow[mysql,crypto,celery,jdbc]==$AIRFLOW_VERSION \
     && apt-get remove --purge -yqq $buildDeps libpq-dev \
     && apt-get clean \
     && rm -rf \
