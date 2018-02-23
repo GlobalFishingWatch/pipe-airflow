@@ -18,8 +18,8 @@ if [ "$1" = "webserver" ] || [ "$1" = "worker" ] || [ "$1" = "scheduler" ] ; the
   done
   echo "Database is ready at ${MYSQL_HOST}:${MYSQL_PORT}"
   if [ "$1" = "webserver" ]; then
-    echo "Initialize database..."
-    airflow initdb
+    echo "Initialize airflow environment"
+    ./initialize.sh
   fi
   sleep 5
 fi

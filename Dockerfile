@@ -4,10 +4,12 @@ FROM python:3.6-slim
 ENV DEBIAN_FRONTEND noninteractive
 ENV TERM linux
 
-# Airflow
+# Airflow configuration
 ARG AIRFLOW_VERSION=1.9.0
 ENV AIRFLOW_HOME /usr/local/airflow
+WORKDIR ${AIRFLOW_HOME}
 
+# Install airflow and it's dependencies
 RUN set -ex \
     && buildDeps=' \
         python3-dev \
@@ -50,13 +52,14 @@ RUN set -ex \
         /usr/share/doc \
         /usr/share/doc-base
 
-COPY config/airflow.cfg ${AIRFLOW_HOME}/airflow.cfg
-COPY scripts/entrypoint.sh ${AIRFLOW_HOME}/entrypoint.sh
+# Setup airflow home directory
+COPY config/* ${AIRFLOW_HOME}/
+COPY scripts/* ${AIRFLOW_HOME}/
+COPY utils/* ${AIRFLOW_HOME}/utils/
 
-RUN chown -R airflow: ${AIRFLOW_HOME} && chmod +x ${AIRFLOW_HOME}/entrypoint.sh
+# Setup user settings
+RUN chown -R airflow: ${AIRFLOW_HOME}
+USER airflow
 
 EXPOSE 8080 5555 8793
-
-USER airflow
-WORKDIR ${AIRFLOW_HOME}
 ENTRYPOINT ["./entrypoint.sh"]
