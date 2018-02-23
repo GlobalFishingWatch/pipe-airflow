@@ -56,6 +56,7 @@ RUN set -ex \
 COPY config/* ${AIRFLOW_HOME}/
 COPY scripts/* ${AIRFLOW_HOME}/
 COPY utils/* ${AIRFLOW_HOME}/utils/
+RUN mkdir ${AiRFLOW_HOME}/dags
 
 # Setup user settings
 RUN chown -R airflow: ${AIRFLOW_HOME}
