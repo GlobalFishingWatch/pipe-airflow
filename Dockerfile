@@ -63,4 +63,4 @@ RUN chown -R airflow: ${AIRFLOW_HOME}
 USER airflow
 
 EXPOSE 8080 5555 8793
-ENTRYPOINT ["./entrypoint.sh"]
+ENTRYPOINT ["./entrypoint"]

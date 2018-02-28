@@ -6,5 +6,5 @@ echo "Running pipe-airflow $1"
 if [ "$1" = "webserver" ] || [ "$1" = "worker" ] || [ "$1" = "scheduler" ] ; then
   exec airflow "$@"
 else
-  exec ./scripts/$@
+  exec ./$@
 fi
