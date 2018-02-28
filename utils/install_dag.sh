@@ -28,7 +28,6 @@ IFS='/' read -ra PARTS <<< "${PARTS[0]}"
 IMAGE=${PARTS[${#PARTS[@]}-1]}
 
 CONTAINER=$1
-HOST_DAG_PATH=${HOST_DAGS}/${IMAGE}
 AIRFLOW_DAG_PATH=${AIRFLOW_HOME}/dags/${IMAGE}
 CONTAINER_DAG_PATH=/dags
 POST_INSTALL=${AIRFLOW_DAG_PATH}/post_install.sh
@@ -41,7 +40,6 @@ if [ -z $DOCKER_USE_LOCAL ]; then
 fi
 
 echo "Creating dag install folder"
-echo "  Host path: $HOST_DAG_PATH"
 echo "  Local path: $AIRFLOW_DAG_PATH"
 echo "  Container path: $CONTAINER_DAG_PATH"
 
@@ -51,7 +49,7 @@ echo ""
 echo "Installing Dags"
 echo "  Container: $CONTAINER"
 
-gcloud docker -- run --entrypoint=/bin/bash -v $HOST_DAG_PATH:$CONTAINER_DAG_PATH $CONTAINER install.sh
+gcloud docker -- run --entrypoint=/bin/bash -v $AIRFLOW_DAG_PATH:$CONTAINER_DAG_PATH $CONTAINER install.sh
 
 
 echo ""
