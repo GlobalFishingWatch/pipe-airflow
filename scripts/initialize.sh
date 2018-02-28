@@ -18,3 +18,6 @@ echo "Initialize worker pools"
 airflow pool -s dataflow 1 "Google Cloud Dataflow jobs"
 airflow pool -s bigquery 1 "Google Bigquery jobs"
 
+echo "Install dags"
+utils/install_dag.sh "gcr.io/world-fishing-827/github-globalfishingwatch-pipe-measures:v0.1.2"
+
