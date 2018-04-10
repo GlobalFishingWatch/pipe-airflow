@@ -3,8 +3,20 @@ TRY_LOOP=10
 
 echo "Running pipe-airflow $1"
 
-if [ "$1" = "webserver" ] || [ "$1" = "worker" ] || [ "$1" = "scheduler" ] ; then
-  exec airflow "$@"
-else
-  exec ./$@
-fi
+case $1 in
+  webserver)
+    exec airflow webserver
+    ;;
+  scheduler)
+    ./dags
+    exec airflow scheduler
+    ;;
+  waitdb)
+    ./waitdb
+    ;;
+  initialize)
+    ./initialize
+    ;;
+  *)
+    echo "Invalid arguments $@"
+esac

@@ -1,8 +1,6 @@
 #!/usr/bin/env bash
 TRY_LOOP=10
 
-echo "Running airflow $1"
-
 # wait for DB
 echo "Waiting until database is ready at ${CLOUDSQL_SERVICE_HOST}:${CLOUDSQL_SERVICE_PORT}"
 i=0
