@@ -32,6 +32,10 @@ RUN set -ex \
         apt-utils \
         curl \
         netcat \
+        iptables \
+        init-system-helpers \
+        libapparmor1 \
+        libltdl7 \
     && useradd -ms /bin/bash -d ${AIRFLOW_HOME} airflow \
     && python -m pip install -U pip setuptools wheel \
     && pip install Cython \
@@ -51,6 +55,12 @@ RUN set -ex \
         /usr/share/man \
         /usr/share/doc \
         /usr/share/doc-base
+
+# Install docker (from https://docs.docker.com/engine/installation/linux/docker-ce/debian/#upgrade-docker-ce and
+#                  and https://github.com/docker-library/docker/blob/master/Dockerfile.template)
+RUN curl -L -o docker.deb \
+       "https://download.docker.com/linux/debian/dists/jessie/pool/stable/amd64/docker-ce_17.03.2~ce-0~debian-jessie_amd64.deb" \
+  && dpkg -i docker.deb
 
 # Download and install google cloud. See the dockerfile at
 # https://hub.docker.com/r/google/cloud-sdk/~/dockerfile/
