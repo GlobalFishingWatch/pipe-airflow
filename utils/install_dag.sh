@@ -13,7 +13,8 @@
 set -e
 
 display_usage() {
-	echo "Usage \n$0 DOCKERIMAGE [post-install-args]"
+	echo "Usage "
+	echo "  $0 DOCKERIMAGE [post-install-args]"
 	}
 
 
