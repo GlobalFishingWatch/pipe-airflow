@@ -1,4 +1,5 @@
 import logging
+import json
 from airflow.models import Variable
 
 def set_default_variables(pipeline_name, variables, force=False):
@@ -9,7 +10,8 @@ def set_default_variables(pipeline_name, variables, force=False):
             logging.info("Setting {}:{} to {}".format(pipeline_name, key, val))
         else:
             logging.info("Leaving {}:{} as {}".format(pipeline_name, key, config[key]))
-    Variable.set(pipeline_name, config, serialize_json=True)
+    config = json.dumps(config, indent=2, sort_keys=True)
+    Variable.set(pipeline_name, config, serialize_json=False)
 
 
 def create_pairs(seq):
@@ -33,6 +35,3 @@ if __name__ == '__main__':
     set_default_variables(args.pipeline_name, create_pairs(args.names_with_defaults))
 
     set_default_variables(args.pipeline_name, create_pairs(args.forced), force=True)
-
-
-
