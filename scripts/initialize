@@ -4,8 +4,8 @@ echo "Initialize airflow database"
 airflow initdb
 
 echo "Initialize standard variables"
-airflow variables --set DATAFLOW_WRAPPER_LOG_PATH "/airflow/log_wrapper"
-airflow variables --set DATAFLOW_WRAPPER_STUB "/airflow/utils/log_wrapper.py"
+airflow variables --set DATAFLOW_WRAPPER_LOG_PATH "${AIRFLOW_HOME}/log_wrapper"
+airflow variables --set DATAFLOW_WRAPPER_STUB "${AIRFLOW_HOME}/utils/log_wrapper.py"
 airflow variables --set DOCKER_RUN "gcloud docker -- run"
 airflow variables --set EVENTS_DATASET $EVENTS_DATASET
 airflow variables --set PIPELINE_BUCKET $PIPELINE_BUCKET
@@ -18,3 +18,12 @@ echo "Initialize worker pools"
 airflow pool -s dataflow 1 "Google Cloud Dataflow jobs"
 airflow pool -s bigquery 1 "Google Bigquery jobs"
 airflow pool -s local-cpu 1 "Local CPU"
+
+echo "Update default GCP connection"
+airflow connections --delete  \
+  --conn_id=google_cloud_default
+
+airflow connections --add   \
+  --conn_id=google_cloud_default \
+  --conn_type=google_cloud_platform  \
+  --conn_extra={\"extra__google_cloud_platform__project\":\"${PROJECT_ID}\"}

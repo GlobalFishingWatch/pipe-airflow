@@ -36,6 +36,7 @@ RUN set -ex \
         init-system-helpers \
         libapparmor1 \
         libltdl7 \
+        nano \
     && useradd -ms /bin/bash -d ${AIRFLOW_HOME} airflow \
     && python -m pip install -U pip setuptools wheel \
     && pip install Cython \
@@ -86,7 +87,8 @@ RUN pip install https://codeload.github.com/GlobalFishingWatch/pipe-tools/tar.gz
 COPY config/* ${AIRFLOW_HOME}/
 COPY scripts/* ${AIRFLOW_HOME}/
 COPY utils/* ${AIRFLOW_HOME}/utils/
-RUN mkdir ${AiRFLOW_HOME}/dags
+RUN mkdir ${AIRFLOW_HOME}/dags
+RUN mkdir ${AIRFLOW_HOME}/log_wrapper
 
 # Setup user settings
 RUN chown -R airflow: ${AIRFLOW_HOME}
