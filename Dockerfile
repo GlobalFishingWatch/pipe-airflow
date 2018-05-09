@@ -1,13 +1,41 @@
-FROM python:3.6-slim
+FROM docker:17.12.0-ce as static-docker-source
+
+FROM python:2.7-slim
 
 # Never prompts the user for choices on installation/configuration of packages
 ENV DEBIAN_FRONTEND noninteractive
 ENV TERM linux
 
 # Airflow configuration
-ARG AIRFLOW_VERSION=1.9.0
+ENV AIRFLOW_VERSION 1.9.0
 ENV AIRFLOW_HOME /usr/local/airflow
-WORKDIR ${AIRFLOW_HOME}
+
+# Use the docker binary from the other source
+COPY --from=static-docker-source /usr/local/bin/docker /usr/local/bin/docker
+
+# Download and install google cloud. See the dockerfile at
+# https://hub.docker.com/r/google/cloud-sdk/~/dockerfile/
+ENV CLOUD_SDK_VERSION 198.0.0
+RUN apt-get -qqy update && apt-get install -qqy \
+        curl \
+        gcc \
+        python-dev \
+        python-setuptools \
+        apt-transport-https \
+        lsb-release \
+        openssh-client \
+        git \
+    && easy_install -U pip && \
+    pip install -U crcmod   && \
+    export CLOUD_SDK_REPO="cloud-sdk-$(lsb_release -c -s)" && \
+    echo "deb https://packages.cloud.google.com/apt $CLOUD_SDK_REPO main" > /etc/apt/sources.list.d/google-cloud-sdk.list && \
+    curl https://packages.cloud.google.com/apt/doc/apt-key.gpg | apt-key add - && \
+    apt-get update && \
+    apt-get install -y google-cloud-sdk=${CLOUD_SDK_VERSION}-0 && \
+    gcloud config set core/disable_usage_reporting true && \
+    gcloud config set component_manager/disable_update_check true && \
+    gcloud config set metrics/environment github_docker_image && \
+    gcloud --version
 
 # Install airflow and it's dependencies
 RUN set -ex \
@@ -32,6 +60,11 @@ RUN set -ex \
         apt-utils \
         curl \
         netcat \
+        iptables \
+        init-system-helpers \
+        libapparmor1 \
+        libltdl7 \
+        nano \
     && useradd -ms /bin/bash -d ${AIRFLOW_HOME} airflow \
     && python -m pip install -U pip setuptools wheel \
     && pip install Cython \
@@ -52,11 +85,16 @@ RUN set -ex \
         /usr/share/doc \
         /usr/share/doc-base
 
+# Setup pipeline debugging tools
+RUN pip install https://codeload.github.com/GlobalFishingWatch/pipe-tools/tar.gz/v0.1.5a
+
 # Setup airflow home directory
+WORKDIR ${AIRFLOW_HOME}
 COPY config/* ${AIRFLOW_HOME}/
 COPY scripts/* ${AIRFLOW_HOME}/
 COPY utils/* ${AIRFLOW_HOME}/utils/
-RUN mkdir ${AiRFLOW_HOME}/dags
+RUN mkdir ${AIRFLOW_HOME}/dags
+RUN mkdir ${AIRFLOW_HOME}/log_wrapper
 
 # Setup user settings
 RUN chown -R airflow: ${AIRFLOW_HOME}

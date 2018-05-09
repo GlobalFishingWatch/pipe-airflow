@@ -1,0 +1,8 @@
+#!/usr/bin/env bash
+
+echo "Installing dags"
+for image in $DAG_IMAGES; do
+  echo "Installing dag from image $image"
+  ./utils/install_dag.sh $image
+done
+
