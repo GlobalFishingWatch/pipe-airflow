@@ -1,5 +1,8 @@
 #!/usr/bin/env bash
 
 echo "Installing dags"
-utils/install_dag.sh "gcr.io/world-fishing-827/github-globalfishingwatch-pipe-measures:v0.1.2"
+for image in $DAG_IMAGES; do
+  echo "Installing dag from image $image"
+  ../utils/install_dag.sh $image
+done
 
