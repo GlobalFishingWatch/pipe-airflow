@@ -17,6 +17,7 @@ COPY --from=static-docker-source /usr/local/bin/docker /usr/local/bin/docker
 # https://hub.docker.com/r/google/cloud-sdk/~/dockerfile/
 ENV CLOUD_SDK_VERSION 198.0.0
 RUN apt-get -qqy update && apt-get install -qqy \
+        gnupg \
         curl \
         gcc \
         python-dev \
@@ -49,7 +50,7 @@ RUN set -ex \
         libblas-dev \
         liblapack-dev \
         libpq-dev \
-        libmysqlclient-dev \
+        default-libmysqlclient-dev \
         git \
     ' \
     && apt-get update -yqq \
