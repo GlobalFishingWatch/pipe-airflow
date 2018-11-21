@@ -7,8 +7,9 @@ ENV DEBIAN_FRONTEND noninteractive
 ENV TERM linux
 
 # Airflow configuration
-ENV AIRFLOW_VERSION 1.9.0
+ENV AIRFLOW_VERSION 1.10.0
 ENV AIRFLOW_HOME /usr/local/airflow
+ENV SLUGIFY_USES_TEXT_UNIDECODE=yes
 
 # Use the docker binary from the other source
 COPY --from=static-docker-source /usr/local/bin/docker /usr/local/bin/docker
@@ -87,7 +88,7 @@ RUN set -ex \
         /usr/share/doc-base
 
 # Setup pipeline debugging tools
-RUN pip install https://codeload.github.com/GlobalFishingWatch/pipe-tools/tar.gz/v0.2.0
+RUN pip install https://codeload.github.com/GlobalFishingWatch/pipe-tools/tar.gz/d884-1
 
 # Setup airflow home directory
 WORKDIR ${AIRFLOW_HOME}

@@ -12,6 +12,7 @@ function ensure_pool {
   fi
 }
 
+
 echo "Initialize airflow database"
 airflow initdb
 
