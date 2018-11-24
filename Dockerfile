@@ -51,7 +51,6 @@ RUN set -ex \
         libblas-dev \
         liblapack-dev \
         libpq-dev \
-        default-libmysqlclient-dev \
         git \
     ' \
     && apt-get update -yqq \
@@ -76,7 +75,8 @@ RUN set -ex \
     && pip install ndg-httpsclient \
     && pip install pyasn1 \
     && pip install celery[redis] \
-    && pip install apache-airflow[mysql,crypto,celery,jdbc]==$AIRFLOW_VERSION \
+    && pip install apache-airflow[postgres,crypto,celery,jdbc]==$AIRFLOW_VERSION \
+    && pip install psycopg2 \
     && apt-get remove --purge -yqq $buildDeps libpq-dev \
     && apt-get clean \
     && rm -rf \
@@ -88,7 +88,7 @@ RUN set -ex \
         /usr/share/doc-base
 
 # Setup pipeline debugging tools
-RUN pip install https://codeload.github.com/GlobalFishingWatch/pipe-tools/tar.gz/d884-1
+RUN pip install https://codeload.github.com/GlobalFishingWatch/pipe-tools/tar.gz/d884-2
 
 # Setup airflow home directory
 WORKDIR ${AIRFLOW_HOME}
