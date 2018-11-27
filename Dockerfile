@@ -88,7 +88,7 @@ RUN set -ex \
         /usr/share/doc-base
 
 # Setup pipeline debugging tools
-RUN pip install https://codeload.github.com/GlobalFishingWatch/pipe-tools/tar.gz/d884-3
+RUN pip install https://codeload.github.com/GlobalFishingWatch/pipe-tools/tar.gz/v1.0.0
 
 # Setup airflow home directory
 WORKDIR ${AIRFLOW_HOME}
