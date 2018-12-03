@@ -7,8 +7,12 @@ ENV DEBIAN_FRONTEND noninteractive
 ENV TERM linux
 
 # Airflow configuration
-ENV AIRFLOW_VERSION 1.9.0
+ENV AIRFLOW_VERSION 1.10.1
 ENV AIRFLOW_HOME /usr/local/airflow
+ENV SLUGIFY_USES_TEXT_UNIDECODE=yes
+
+# Pipe-tools
+ENV PIPE_TOOLS_VERSION v1.0.0
 
 # Use the docker binary from the other source
 COPY --from=static-docker-source /usr/local/bin/docker /usr/local/bin/docker
@@ -50,7 +54,6 @@ RUN set -ex \
         libblas-dev \
         liblapack-dev \
         libpq-dev \
-        default-libmysqlclient-dev \
         git \
     ' \
     && apt-get update -yqq \
@@ -75,7 +78,8 @@ RUN set -ex \
     && pip install ndg-httpsclient \
     && pip install pyasn1 \
     && pip install celery[redis] \
-    && pip install apache-airflow[mysql,crypto,celery,jdbc]==$AIRFLOW_VERSION \
+    && pip install apache-airflow[postgres,crypto,celery,jdbc]==$AIRFLOW_VERSION \
+    && pip install psycopg2 \
     && apt-get remove --purge -yqq $buildDeps libpq-dev \
     && apt-get clean \
     && rm -rf \
@@ -87,7 +91,7 @@ RUN set -ex \
         /usr/share/doc-base
 
 # Setup pipeline debugging tools
-RUN pip install https://codeload.github.com/GlobalFishingWatch/pipe-tools/tar.gz/v0.2.0
+RUN pip install https://codeload.github.com/GlobalFishingWatch/pipe-tools/tar.gz/${PIPE_TOOLS_VERSION}
 
 # Setup airflow home directory
 WORKDIR ${AIRFLOW_HOME}
