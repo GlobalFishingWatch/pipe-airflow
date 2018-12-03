@@ -10,8 +10,6 @@ Changelog](https://keepachangelog.com/en/1.0.0/), and this project adheres to
 
 ### Added
   * [#884](https://github.com/GlobalFishingWatch/GFW-Tasks/issues/884):
-    Migrates Airflow version to 1.10.1 on pipe-tools.
-    Ignore the `GPL License`
-    Uses `postgres` instead of `mysql`, because the property specified here (https://github.com/apache/incubator-airflow/blob/master/UPDATING.md#mysql-setting-required) could not be changed in CloudSQL.
-    Update the pipe-tools version.
-    Include all the new properties in `airflow.cfg` that comes with the upgrade.
+    * Migrates Airflow version to 1.10.1 on pipe-tools.
+    * Uses `postgres` instead of `mysql`, because the property specified here (https://github.com/apache/incubator-airflow/blob/master/UPDATING.md#mysql-setting-required) could not be changed in CloudSQL.
+    * Update the pipe-tools version to 1.0.0.
