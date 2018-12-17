@@ -69,7 +69,7 @@ RUN set -ex \
         libapparmor1 \
         libltdl7 \
         nano \
-    && useradd -ms /bin/bash -d ${AIRFLOW_HOME} airflow \
+    && useradd -ms /bin/bash -u 1001 -d ${AIRFLOW_HOME} airflow \
     && python -m pip install -U pip setuptools wheel \
     && pip install Cython \
     && pip install cryptography \
