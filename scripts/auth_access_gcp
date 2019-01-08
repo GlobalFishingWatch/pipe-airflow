@@ -1,0 +1,4 @@
+#!/usr/bin/env bash
+
+echo "Authorize Access on Google Cloud Platform"
+gcloud auth activate-service-account pull-image-from-gcr@world-fishing-827.iam.gserviceaccount.com --key-file=PRIVATE_KEY.p12
