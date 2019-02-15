@@ -78,7 +78,7 @@ RUN set -ex \
     && pip install ndg-httpsclient \
     && pip install pyasn1 \
     && pip install celery[redis] \
-    && pip install apache-airflow[postgres,crypto,celery,jdbc]==$AIRFLOW_VERSION \
+    && pip install --no-use-pep517 apache-airflow[postgres,crypto,celery,jdbc]==$AIRFLOW_VERSION \
     && pip install psycopg2 \
     && apt-get remove --purge -yqq $buildDeps libpq-dev \
     && apt-get clean \
