@@ -8,7 +8,7 @@ Changelog](https://keepachangelog.com/en/1.0.0/), and this project adheres to
 
 ## [Unreleased]
 
-  * Addressing a pip update error for pip 19 with PEP517
+  * Replacing the [pipe-tools](https://github.com/GlobalFishingWatch/pipe-tools) lib with the [airflow-gfw](https://github.com/GlobalFishingWatch/airflow-gfw) lib
   * The number of task instances allowed to run concurrently was reduced to 3. Using 16 instances restarts the web pod recursively.
   * Adds kubernetes section in `airflow.cfg`
   * Adds authentication step before installing DAGs to let pull images from grc.io repo.
