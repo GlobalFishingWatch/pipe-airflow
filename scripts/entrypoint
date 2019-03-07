@@ -8,6 +8,7 @@ case $1 in
     exec airflow webserver
     ;;
   scheduler)
+    ./authenticate
     ./install_dags
     exec airflow scheduler
     ;;

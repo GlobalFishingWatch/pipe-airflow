@@ -1,0 +1,4 @@
+#!/usr/bin/env bash
+
+echo "Authenticate to pull images"
+gcloud auth activate-service-account ${GCLOUD_ACCOUNT} --key-file=.gcloud/keyfile
