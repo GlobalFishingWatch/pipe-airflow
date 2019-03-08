@@ -8,7 +8,17 @@ Changelog](https://keepachangelog.com/en/1.0.0/), and this project adheres to
 
 ## [Unreleased]
 
+## v0.3.0 - (2019-03-08)
+
+###Added
+
+* {GFW-Tasks/issues/968}(https://github.com/GlobalFishingWatch/GFW-Tasks/issues/968) Make pipe-tools master up to date
   * Replacing the [pipe-tools](https://github.com/GlobalFishingWatch/pipe-tools) lib with the [airflow-gfw](https://github.com/GlobalFishingWatch/airflow-gfw) lib
+
+## v0.2.9 - (2019-03-07)
+
+###Added
+* [GFW-Tasks/issues/912](https://github.com/GlobalFishingWatch/GFW-Tasks/issues/912)
   * The number of task instances allowed to run concurrently was reduced to 3. Using 16 instances restarts the web pod recursively.
   * Adds kubernetes section in `airflow.cfg`
   * Adds authentication step before installing DAGs to let pull images from grc.io repo.
