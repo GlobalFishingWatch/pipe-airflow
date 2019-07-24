@@ -14,7 +14,7 @@ ENV SLUGIFY_USES_TEXT_UNIDECODE=yes
 # Pipe-tools
 ENV PIPE_TOOLS_VERSION v1.0.0
 #Airflow-gfw
-ENV AIRFLOW_GFW_VERSION v0.0.1-dev3
+ENV AIRFLOW_GFW_VERSION d1100-1
 
 # Use the docker binary from the other source
 COPY --from=static-docker-source /usr/local/bin/docker /usr/local/bin/docker
