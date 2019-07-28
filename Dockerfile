@@ -39,6 +39,7 @@ RUN apt-get -qqy update && apt-get install -qqy \
     curl https://packages.cloud.google.com/apt/doc/apt-key.gpg | apt-key add - && \
     apt-get update && \
     apt-get install -y google-cloud-sdk=${CLOUD_SDK_VERSION}-0 && \
+    pip install google-auth==1.6.3 && \
     gcloud config set core/disable_usage_reporting true && \
     gcloud config set component_manager/disable_update_check true && \
     gcloud config set metrics/environment github_docker_image && \
