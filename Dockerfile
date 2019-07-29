@@ -21,7 +21,7 @@ COPY --from=static-docker-source /usr/local/bin/docker /usr/local/bin/docker
 
 # Download and install google cloud. See the dockerfile at
 # https://hub.docker.com/r/google/cloud-sdk/~/dockerfile/
-ENV CLOUD_SDK_VERSION 255.0.0
+ENV CLOUD_SDK_VERSION 248.0.0
 RUN apt-get -qqy update && apt-get install -qqy \
         gnupg \
         curl \
@@ -94,6 +94,7 @@ RUN set -ex \
 
 # Setup pipeline debugging tools
 RUN pip install https://codeload.github.com/GlobalFishingWatch/pipe-tools/tar.gz/${PIPE_TOOLS_VERSION}
+RUN pip install google-auth==1.6.3
 RUN pip install https://github.com/GlobalFishingWatch/airflow-gfw/archive/${AIRFLOW_GFW_VERSION}.tar.gz
 
 # Setup airflow home directory
