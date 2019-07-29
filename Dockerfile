@@ -11,10 +11,8 @@ ENV AIRFLOW_VERSION 1.10.2
 ENV AIRFLOW_HOME /usr/local/airflow
 ENV SLUGIFY_USES_TEXT_UNIDECODE=yes
 
-# Pipe-tools
-ENV PIPE_TOOLS_VERSION v1.0.0
 #Airflow-gfw
-ENV AIRFLOW_GFW_VERSION d1100-5
+ENV AIRFLOW_GFW_VERSION d1100-4
 
 # Use the docker binary from the other source
 COPY --from=static-docker-source /usr/local/bin/docker /usr/local/bin/docker
@@ -93,7 +91,6 @@ RUN set -ex \
         /usr/share/doc-base
 
 # Setup pipeline debugging tools
-RUN pip install https://codeload.github.com/GlobalFishingWatch/pipe-tools/tar.gz/${PIPE_TOOLS_VERSION}
 RUN pip install https://github.com/GlobalFishingWatch/airflow-gfw/archive/${AIRFLOW_GFW_VERSION}.tar.gz
 
 # Setup airflow home directory
