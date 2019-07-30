@@ -12,7 +12,7 @@ ENV AIRFLOW_HOME /usr/local/airflow
 ENV SLUGIFY_USES_TEXT_UNIDECODE=yes
 
 #Airflow-gfw
-ENV AIRFLOW_GFW_VERSION d1100-6
+ENV AIRFLOW_GFW_VERSION d1100-7
 
 # Use the docker binary from the other source
 COPY --from=static-docker-source /usr/local/bin/docker /usr/local/bin/docker
