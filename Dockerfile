@@ -12,7 +12,7 @@ ENV AIRFLOW_HOME /usr/local/airflow
 ENV SLUGIFY_USES_TEXT_UNIDECODE=yes
 
 #Airflow-gfw
-ENV AIRFLOW_GFW_VERSION d1100-4
+ENV AIRFLOW_GFW_VERSION d1100-6
 
 # Use the docker binary from the other source
 COPY --from=static-docker-source /usr/local/bin/docker /usr/local/bin/docker
@@ -78,6 +78,7 @@ RUN set -ex \
     && pip install ndg-httpsclient \
     && pip install pyasn1 \
     && pip install celery[redis] \
+    && pip install tzlocal==1.5.1 \
     && pip install apache-airflow[postgres,crypto,celery,jdbc]==$AIRFLOW_VERSION \
     && pip install psycopg2 \
     && apt-get remove --purge -yqq $buildDeps libpq-dev \
