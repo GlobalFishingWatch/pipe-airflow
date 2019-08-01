@@ -8,6 +8,22 @@ Changelog](https://keepachangelog.com/en/1.0.0/), and this project adheres to
 
 ## [Unreleased]
 
+###Added
+
+* {GFW-Tasks/issues/1100}(https://github.com/GlobalFishingWatch/GFW-Tasks/issues/1100): Adds
+  * Update of airflow from 1.10.1 to 1.10.2
+  * CLOUD_SDK_VERSION was updated from 198.0.0 to 248.0.0
+  * The `tzlocal` library has deployed a new version on 23rd of July, the
+   version `2.0.0` (https://pypi.org/project/tzlocal/2.0.0/#history). This lib
+   brokes the compilation. Apache Airflow requires the `tzlocal` and
+   `pendulum` libraries to be installed. In the `setup.py` file, the section
+   `install_requires`, appears the dependencies and the lib `tzlocal>=1.4` and
+   `pendulum==1.4.4`
+   (https://github.com/apache/airflow/blob/1.10.2/setup.py#L337). The
+   `pendulum` lib brokes with lib `tzlocal==2.0.0`, so right now I pinned to
+   the previous version, the `1.5.1`.
+  * Removing the `pipe-tools` dependency in pipe-airflow. This library will be used for projects that will run inside airflow.
+
 ## v0.3.0 - (2019-03-08)
 
 ###Added
