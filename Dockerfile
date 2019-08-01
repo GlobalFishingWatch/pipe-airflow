@@ -78,7 +78,7 @@ RUN set -ex \
     && pip install ndg-httpsclient \
     && pip install pyasn1 \
     && pip install celery[redis] \
-    && pip install tzlocal==1.5.1 \
+    && pip install tzlocal==1.5.1 \ #TODO remove this line when we upgrade to airflow 1.10.4, version 2.0.0 of tzlocal produce an error in the SSL handshage for httplib
     && pip install apache-airflow[postgres,crypto,celery,jdbc]==$AIRFLOW_VERSION \
     && pip install psycopg2 \
     && apt-get remove --purge -yqq $buildDeps libpq-dev \
