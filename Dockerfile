@@ -7,21 +7,19 @@ ENV DEBIAN_FRONTEND noninteractive
 ENV TERM linux
 
 # Airflow configuration
-ENV AIRFLOW_VERSION 1.10.1
+ENV AIRFLOW_VERSION 1.10.2
 ENV AIRFLOW_HOME /usr/local/airflow
 ENV SLUGIFY_USES_TEXT_UNIDECODE=yes
 
-# Pipe-tools
-ENV PIPE_TOOLS_VERSION v1.0.0
 #Airflow-gfw
-ENV AIRFLOW_GFW_VERSION v0.0.1-dev3
+ENV AIRFLOW_GFW_VERSION v0.0.2
 
 # Use the docker binary from the other source
 COPY --from=static-docker-source /usr/local/bin/docker /usr/local/bin/docker
 
 # Download and install google cloud. See the dockerfile at
 # https://hub.docker.com/r/google/cloud-sdk/~/dockerfile/
-ENV CLOUD_SDK_VERSION 198.0.0
+ENV CLOUD_SDK_VERSION 248.0.0
 RUN apt-get -qqy update && apt-get install -qqy \
         gnupg \
         curl \
@@ -80,6 +78,8 @@ RUN set -ex \
     && pip install ndg-httpsclient \
     && pip install pyasn1 \
     && pip install celery[redis] \
+    #TODO remove this line when we upgrade to airflow 1.10.4, version 2.0.0 of tzlocal produce an error in the SSL handshage for httplib
+    && pip install tzlocal==1.5.1 \
     && pip install apache-airflow[postgres,crypto,celery,jdbc]==$AIRFLOW_VERSION \
     && pip install psycopg2 \
     && apt-get remove --purge -yqq $buildDeps libpq-dev \
@@ -93,7 +93,6 @@ RUN set -ex \
         /usr/share/doc-base
 
 # Setup pipeline debugging tools
-RUN pip install https://codeload.github.com/GlobalFishingWatch/pipe-tools/tar.gz/${PIPE_TOOLS_VERSION}
 RUN pip install https://github.com/GlobalFishingWatch/airflow-gfw/archive/${AIRFLOW_GFW_VERSION}.tar.gz
 
 # Setup airflow home directory
