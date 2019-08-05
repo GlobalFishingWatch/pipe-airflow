@@ -31,8 +31,10 @@ Changelog](https://keepachangelog.com/en/1.0.0/), and this project adheres to
 
 ###Added
 
-* [GFW-Tasks/issues/968](https://github.com/GlobalFishingWatch/GFW-Tasks/issues/968): Changes making pipe-tools master up to date
-  * Replacing the [pipe-tools](https://github.com/GlobalFishingWatch/pipe-tools) lib with the [airflow-gfw](https://github.com/GlobalFishingWatch/airflow-gfw) lib
+* [GFW-Tasks/issues/968](https://github.com/GlobalFishingWatch/GFW-Tasks/issues/968): Changes
+  making pipe-tools master up to date replacing the
+  [pipe-tools](https://github.com/GlobalFishingWatch/pipe-tools) lib with the
+  [airflow-gfw](https://github.com/GlobalFishingWatch/airflow-gfw) lib
 
 ## v0.2.9 - 2019-03-07
 
