@@ -17,7 +17,7 @@ display_usage() {
 	echo "  $0 DOCKERIMAGE [post-install-args]"
 	}
 
-wait_for_docker_daemon() {
+is_docker_daemon_up() {
   local DOCKER_DEAMON_HOST=$(echo $DOCKER_HOST | sed 's/tcp:\/\/\([^:]*\).*/\1/')
   local DOCKER_DEAMON_PORT=$(echo $DOCKER_HOST | sed 's/.*:\([^:]*\)$/\1/')
   nc -v -w 5 ${DOCKER_DEAMON_HOST} ${DOCKER_DEAMON_PORT} < /dev/null
@@ -40,7 +40,7 @@ CONTAINER_DAG_PATH=/dags
 POST_INSTALL=${AIRFLOW_DAG_PATH}/post_install.sh
 
 
-while ! wait_for_docker_daemon; do
+while ! is_docker_daemon_up; do
   echo "Waiting until Docker Daemon is ready."
   sleep 5
 done
