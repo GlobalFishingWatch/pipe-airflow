@@ -8,6 +8,13 @@ Changelog](https://keepachangelog.com/en/1.0.0/), and this project adheres to
 
 ## [Unreleased]
 
+## v1.0.1 - 2019-08-13
+
+###Added
+
+* [GFW-Tasks/issues/1112](https://github.com/GlobalFishingWatch/GFW-Tasks/issues/1112): Adds
+    a validator on the Docker Daemon connection if it is open. If not try at least 10 times.
+
 ## v1.0.0 - 2019-08-05
 
 ### Added
