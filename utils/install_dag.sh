@@ -54,9 +54,7 @@ CONTAINER_DAG_PATH=/dags
 POST_INSTALL=${AIRFLOW_DAG_PATH}/post_install.sh
 
 
-while ! wait_for_docker_daemon; do
-  echo
-done
+wait_for_docker_daemon
 
 if [ -z $DOCKER_USE_LOCAL ]; then
   echo "Updating docker image"
