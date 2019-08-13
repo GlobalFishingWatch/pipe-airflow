@@ -17,7 +17,7 @@ display_usage() {
 	echo "  $0 DOCKERIMAGE [post-install-args]"
 	}
 
-is_docker_daemon_up() {
+wait_for_docker_daemon() {
   local TRY_LOOP=10
   local DOCKER_DEAMON_HOST=$(echo $DOCKER_HOST | sed 's/tcp:\/\/\([^:]*\).*/\1/')
   local DOCKER_DEAMON_PORT=$(echo $DOCKER_HOST | sed 's/.*:\([^:]*\)$/\1/')
@@ -54,7 +54,9 @@ CONTAINER_DAG_PATH=/dags
 POST_INSTALL=${AIRFLOW_DAG_PATH}/post_install.sh
 
 
-is_docker_daemon_up
+while ! wait_for_docker_daemon; do
+  echo
+done
 
 if [ -z $DOCKER_USE_LOCAL ]; then
   echo "Updating docker image"
