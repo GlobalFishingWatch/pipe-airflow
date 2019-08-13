@@ -18,9 +18,23 @@ display_usage() {
 	}
 
 is_docker_daemon_up() {
+  local TRY_LOOP=10
   local DOCKER_DEAMON_HOST=$(echo $DOCKER_HOST | sed 's/tcp:\/\/\([^:]*\).*/\1/')
   local DOCKER_DEAMON_PORT=$(echo $DOCKER_HOST | sed 's/.*:\([^:]*\)$/\1/')
-  nc -v -w 5 ${DOCKER_DEAMON_HOST} ${DOCKER_DEAMON_PORT} < /dev/null
+
+  # wait for DockerDaemon
+  echo "Waiting until Docker Daemon is ready at ${DOCKER_DEAMON_HOST}:${DOCKER_DEAMON_PORT}"
+  i=0
+  while ! nc -v -w 5 ${DOCKER_DEAMON_HOST} ${DOCKER_DEAMON_PORT} < /dev/null; do
+    i=`expr $i + 1`
+    if [ $i -ge $TRY_LOOP ]; then
+      echo "$(date) - ${DOCKER_DEAMON_HOST}:${DOCKER_DEAMON_PORT} still not reachable, giving up"
+      exit 1
+    fi
+    echo "$(date) - waiting for ${DOCKER_DEAMON_HOST}:${DOCKER_DEAMON_PORT}... $i/$TRY_LOOP"
+    sleep 5
+  done
+  echo "Docker Daemon is ready at ${DOCKER_DEAMON_HOST}:${DOCKER_DEAMON_PORT}"
 }
 
 
@@ -40,10 +54,7 @@ CONTAINER_DAG_PATH=/dags
 POST_INSTALL=${AIRFLOW_DAG_PATH}/post_install.sh
 
 
-while ! is_docker_daemon_up; do
-  echo "Waiting until Docker Daemon is ready."
-  sleep 5
-done
+is_docker_daemon_up
 
 if [ -z $DOCKER_USE_LOCAL ]; then
   echo "Updating docker image"
