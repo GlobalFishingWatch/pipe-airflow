@@ -7,19 +7,19 @@ ENV DEBIAN_FRONTEND noninteractive
 ENV TERM linux
 
 # Airflow configuration
-ENV AIRFLOW_VERSION 1.10.2
+ENV AIRFLOW_VERSION 1.10.5
 ENV AIRFLOW_HOME /usr/local/airflow
 ENV SLUGIFY_USES_TEXT_UNIDECODE=yes
 
 #Airflow-gfw
-ENV AIRFLOW_GFW_VERSION v0.0.2
+ENV AIRFLOW_GFW_VERSION d1160-1
 
 # Use the docker binary from the other source
 COPY --from=static-docker-source /usr/local/bin/docker /usr/local/bin/docker
 
 # Download and install google cloud. See the dockerfile at
 # https://hub.docker.com/r/google/cloud-sdk/~/dockerfile/
-ENV CLOUD_SDK_VERSION 248.0.0
+ENV CLOUD_SDK_VERSION 255.0.0
 RUN apt-get -qqy update && apt-get install -qqy \
         gnupg \
         curl \
@@ -78,8 +78,6 @@ RUN set -ex \
     && pip install ndg-httpsclient \
     && pip install pyasn1 \
     && pip install celery[redis] \
-    #TODO remove this line when we upgrade to airflow 1.10.4, version 2.0.0 of tzlocal produce an error in the SSL handshage for httplib
-    && pip install tzlocal==1.5.1 \
     && pip install apache-airflow[postgres,crypto,celery,jdbc]==$AIRFLOW_VERSION \
     && pip install psycopg2 \
     && apt-get remove --purge -yqq $buildDeps libpq-dev \
