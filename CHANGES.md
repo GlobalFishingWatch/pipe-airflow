@@ -8,7 +8,7 @@ Changelog](https://keepachangelog.com/en/1.0.0/), and this project adheres to
 
 ## [Unreleased]
 
-## v1.0.2 - 2019-11-14
+## v1.0.2 - 2019-11-21
 
 ### Changed
 
@@ -16,6 +16,7 @@ Changelog](https://keepachangelog.com/en/1.0.0/), and this project adheres to
     the `Apache Airflow` version from `1.10.2` to `1.10.5`.
     And the `Airflow-GFW` version from `v0.0.2` to `v0.0.3`.
     And the `Cloud-SDK` version from `248.0.0` to `255.0.0`.
+    Needs to set the variable `SLACK_WEBHOOK_TOKEN` to send notification when a task fails.
 
 ## v1.0.1 - 2019-08-13
 

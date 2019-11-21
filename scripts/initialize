@@ -39,3 +39,9 @@ airflow connections --add   \
   --conn_id=google_cloud_default \
   --conn_type=google_cloud_platform  \
   --conn_extra={\"extra__google_cloud_platform__project\":\"${PROJECT_ID}\"}
+
+airflow connections --add   \
+  --conn_id=slack_on_failure \
+  --conn_type=http \
+  --conn_host=https://hooks.slack.com/services \
+  --conn_password=${SLACK_WEBHOOK_TOKEN}
