@@ -71,6 +71,7 @@ RUN set -ex \
         nano \
     && useradd -ms /bin/bash -u 1001 -d ${AIRFLOW_HOME} airflow \
     && python -m pip install -U pip setuptools wheel \
+    && pip install marshmallow-sqlalchemy==0.17.2 \
     && pip install Cython \
     && pip install cryptography \
     && pip install pytz \
