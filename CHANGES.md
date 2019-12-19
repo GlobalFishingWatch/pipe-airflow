@@ -8,6 +8,13 @@ Changelog](https://keepachangelog.com/en/1.0.0/), and this project adheres to
 
 ## [Unreleased]
 
+## v1.0.5 - 2019-12-19
+
+### Changed
+
+* [GFW-Tasks/issues/1164](https://github.com/GlobalFishingWatch/GFW-Tasks/issues/1164): Changed
+    the `Airflow-GFW` version from `v0.0.5` to `v0.0.6`.
+
 ## v1.0.4 - 2019-12-03
 
 ### Changed
