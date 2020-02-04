@@ -1,6 +1,6 @@
 FROM docker:17.12.0-ce as static-docker-source
 
-FROM python:3.8.1-slim-buster
+FROM python:3.7.6-slim-buster
 
 # Never prompts the user for choices on installation/configuration of packages
 ENV DEBIAN_FRONTEND noninteractive
