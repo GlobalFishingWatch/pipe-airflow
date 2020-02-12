@@ -19,7 +19,7 @@ COPY --from=static-docker-source /usr/local/bin/docker /usr/local/bin/docker
 
 # Download and install google cloud. See the dockerfile at
 # https://hub.docker.com/r/google/cloud-sdk/~/dockerfile/
-ENV CLOUD_SDK_VERSION 255.0.0
+ENV CLOUD_SDK_VERSION 268.0.0
 RUN apt-get -qqy update && apt-get install -qqy \
         gnupg \
         curl \
@@ -31,7 +31,7 @@ RUN apt-get -qqy update && apt-get install -qqy \
         openssh-client \
         git \
     && easy_install -U pip && \
-    pip3 install -U crcmod   && \
+    pip install -U crcmod   && \
     export CLOUD_SDK_REPO="cloud-sdk-$(lsb_release -c -s)" && \
     echo "deb https://packages.cloud.google.com/apt $CLOUD_SDK_REPO main" > /etc/apt/sources.list.d/google-cloud-sdk.list && \
     curl https://packages.cloud.google.com/apt/doc/apt-key.gpg | apt-key add - && \
@@ -71,16 +71,16 @@ RUN set -ex \
         nano \
     && useradd -ms /bin/bash -u 1001 -d ${AIRFLOW_HOME} airflow \
     && python -m pip install -U pip setuptools wheel \
-    && pip3 install marshmallow-sqlalchemy==0.17.2 \
-    && pip3 install Cython \
-    && pip3 install cryptography \
-    && pip3 install pytz \
-    && pip3 install pyOpenSSL \
-    && pip3 install ndg-httpsclient \
-    && pip3 install pyasn1 \
-    && pip3 install celery[redis] \
-    && pip3 install apache-airflow[postgres,crypto,celery,jdbc]==$AIRFLOW_VERSION \
-    && pip3 install psycopg2 \
+    && pip install marshmallow-sqlalchemy==0.17.2 \
+    && pip install Cython \
+    && pip install cryptography \
+    && pip install pytz \
+    && pip install pyOpenSSL \
+    && pip install ndg-httpsclient \
+    && pip install pyasn1 \
+    && pip install celery[redis] \
+    && pip install apache-airflow[postgres,crypto,celery,jdbc]==$AIRFLOW_VERSION \
+    && pip install psycopg2 \
     && apt-get remove --purge -yqq $buildDeps libpq-dev \
     && apt-get clean \
     && rm -rf \
