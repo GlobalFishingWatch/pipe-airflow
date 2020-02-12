@@ -92,7 +92,7 @@ RUN set -ex \
         /usr/share/doc-base
 
 # Setup pipeline debugging tools
-RUN pip3 install https://github.com/GlobalFishingWatch/airflow-gfw/archive/${AIRFLOW_GFW_VERSION}.tar.gz
+RUN pip install https://github.com/GlobalFishingWatch/airflow-gfw/archive/${AIRFLOW_GFW_VERSION}.tar.gz
 
 # Setup airflow home directory
 WORKDIR ${AIRFLOW_HOME}
