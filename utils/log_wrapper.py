@@ -29,7 +29,7 @@ def get_logger(options):
 
 def log_line(line, logger):
     # TODO: Should just use another handler in the logger to sent to stdout
-    print line
+    print(line)
     logger.info(line)
 
 

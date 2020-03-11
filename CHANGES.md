@@ -8,6 +8,13 @@ Changelog](https://keepachangelog.com/en/1.0.0/), and this project adheres to
 
 ## [Unreleased]
 
+## v1.0.7 - 2020-03-11
+
+### Changed
+
+* [GlobalFishingWatch/gfw-eng-tasks#3](https://github.com/GlobalFishingWatch/gfw-eng-tasks/issues/3): Changed
+    to Python3.7 and airflow-gfw:v1.0.0
+
 ## v1.0.6 - 2020-01-22
 
 ### Changed
