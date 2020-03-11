@@ -81,6 +81,7 @@ RUN set -ex \
     && pip install celery[redis] \
     && pip install apache-airflow[postgres,crypto,celery,jdbc]==$AIRFLOW_VERSION \
     && pip install psycopg2-binary \
+    && pip install 'werkzeug<1.0.0' \
     && apt-get remove --purge -yqq $buildDeps libpq-dev \
     && apt-get clean \
     && rm -rf \
