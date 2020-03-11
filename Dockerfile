@@ -80,7 +80,7 @@ RUN set -ex \
     && pip install pyasn1 \
     && pip install celery[redis] \
     && pip install apache-airflow[postgres,crypto,celery,jdbc]==$AIRFLOW_VERSION \
-    && pip install psycopg2 \
+    && pip install psycopg2-binary \
     && apt-get remove --purge -yqq $buildDeps libpq-dev \
     && apt-get clean \
     && rm -rf \
