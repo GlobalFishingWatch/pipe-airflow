@@ -1,6 +1,6 @@
 FROM docker:17.12.0-ce as static-docker-source
 
-FROM python:2.7-slim
+FROM python:3.7.6-slim-buster
 
 # Never prompts the user for choices on installation/configuration of packages
 ENV DEBIAN_FRONTEND noninteractive
@@ -12,14 +12,14 @@ ENV AIRFLOW_HOME /usr/local/airflow
 ENV SLUGIFY_USES_TEXT_UNIDECODE=yes
 
 #Airflow-gfw
-ENV AIRFLOW_GFW_VERSION v0.0.7
+ENV AIRFLOW_GFW_VERSION v1.0.0
 
 # Use the docker binary from the other source
 COPY --from=static-docker-source /usr/local/bin/docker /usr/local/bin/docker
 
 # Download and install google cloud. See the dockerfile at
 # https://hub.docker.com/r/google/cloud-sdk/~/dockerfile/
-ENV CLOUD_SDK_VERSION 255.0.0
+ENV CLOUD_SDK_VERSION 268.0.0
 RUN apt-get -qqy update && apt-get install -qqy \
         gnupg \
         curl \
