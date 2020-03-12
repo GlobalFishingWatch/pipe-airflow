@@ -8,6 +8,25 @@ Changelog](https://keepachangelog.com/en/1.0.0/), and this project adheres to
 
 ## [Unreleased]
 
+
+## v1.1.0 - 2020-03-12
+
+### Added
+
+* [GlobalFishingWatch/gfw-eng-tasks#29](https://github.com/GlobalFishingWatch/gfw-eng-tasks/issues/29): Adds
+    library `werkzeug` to version `1.0.0`.
+
+### Changed
+
+* [GlobalFishingWatch/gfw-eng-tasks#29](https://github.com/GlobalFishingWatch/gfw-eng-tasks/issues/29): Changes
+    library `psycopg2` to `psycopg2-binary`.
+
+
+### Removed
+
+* [GlobalFishingWatch/gfw-eng-tasks#29](https://github.com/GlobalFishingWatch/gfw-eng-tasks/issues/29): Removes
+    the airflow_home variable from airflow config.
+
 ## v1.0.7 - 2020-03-11
 
 ### Changed
