@@ -9,6 +9,13 @@ Changelog](https://keepachangelog.com/en/1.0.0/), and this project adheres to
 ## [Unreleased]
 
 
+## v1.1.1 - 2020-03-27
+
+### Added
+
+* [GlobalFishingWatch/gfw-eng-tasks#42](https://github.com/GlobalFishingWatch/gfw-eng-tasks/issues/42): Adds
+    the retries or the timeout sensor in order to takes more time to check the availability of the data.
+
 ## v1.1.0 - 2020-03-12
 
 ### Added
