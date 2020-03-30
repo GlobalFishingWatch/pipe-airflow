@@ -8,6 +8,13 @@ Changelog](https://keepachangelog.com/en/1.0.0/), and this project adheres to
 
 ## [Unreleased]
 
+## v1.0.6-HOTFIX1 - 2020-03-30
+
+### Changed
+
+* [GFW-Tasks/issues/1164](https://github.com/GlobalFishingWatch/GFW-Tasks/issues/1164): Changed
+    the `Airflow-GFW` version from `v0.0.7` to `v0.0.7-HOTFIX1`.
+
 ## v1.0.6 - 2020-01-22
 
 ### Changed
