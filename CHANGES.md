@@ -9,6 +9,13 @@ Changelog](https://keepachangelog.com/en/1.0.0/), and this project adheres to
 ## [Unreleased]
 
 
+## v1.1.1 - 2020-03-31
+
+### Added
+
+* [GlobalFishingWatch/gfw-eng-tasks#42](https://github.com/GlobalFishingWatch/gfw-eng-tasks/issues/42): Adds
+    support to setup the retries or the timeout for gcs sensor.
+
 ## v1.1.0 - 2020-03-12
 
 ### Added
