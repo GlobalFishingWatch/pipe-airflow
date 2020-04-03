@@ -9,6 +9,13 @@ Changelog](https://keepachangelog.com/en/1.0.0/), and this project adheres to
 ## [Unreleased]
 
 
+## v1.1.2 - 2020-04-03
+
+### Added
+
+* [GlobalFishingWatch/gfw-eng-tasks#46](https://github.com/GlobalFishingWatch/gfw-eng-tasks/issues/46): Adds
+    useful Airflow variables and pool in `initialize.sh` script.
+
 ## v1.1.1 - 2020-03-31
 
 ### Added
