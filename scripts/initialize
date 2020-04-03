@@ -25,11 +25,15 @@ airflow variables --set PIPELINE_DATASET $PIPELINE_DATASET
 airflow variables --set PIPELINE_START_DATE $PIPELINE_START_DATE
 airflow variables --set PROJECT_ID $PROJECT_ID
 airflow variables --set TEMP_BUCKET $TEMP_BUCKET
+airflow variables --set FLEXIBLE_OPERATOR $FLEXIBLE_OPERATOR
+airflow variables --set INFERENCE_BUFFER_DAYS $INFERENCE_BUFFER_DAYS
+airflow variables --set TEMP_DATASET $TEMP_DATASET
 
 echo "Initialize worker pools"
 ensure_pool dataflow 1 "Google Cloud Dataflow jobs"
 ensure_pool bigquery 1 "Google Bigquery jobs"
 ensure_pool local-cpu 1 "Local CPU"
+ensure_pool k8operators_limit 6 "Kubernetes operator pool"
 
 echo "Update default GCP connection"
 airflow connections --delete  \
