@@ -7,7 +7,7 @@ ENV DEBIAN_FRONTEND noninteractive
 ENV TERM linux
 
 # Airflow configuration
-ENV AIRFLOW_VERSION 1.10.6
+ENV AIRFLOW_VERSION 1.10.10
 ENV AIRFLOW_HOME /usr/local/airflow
 ENV SLUGIFY_USES_TEXT_UNIDECODE=yes
 
@@ -71,7 +71,7 @@ RUN set -ex \
         nano \
     && useradd -ms /bin/bash -u 1001 -d ${AIRFLOW_HOME} airflow \
     && python -m pip install -U pip setuptools wheel \
-    && pip install marshmallow-sqlalchemy==0.17.2 \
+    && pip install marshmallow-sqlalchemy==0.22.3 \
     && pip install Cython \
     && pip install cryptography \
     && pip install pytz \
