@@ -79,6 +79,7 @@ RUN set -ex \
     && pip install ndg-httpsclient \
     && pip install pyasn1 \
     && pip install celery[redis] \
+    && pip install sqlalchemy==1.3.15 \
     && pip install apache-airflow[postgres,crypto,celery,jdbc]==$AIRFLOW_VERSION \
     && pip install psycopg2-binary \
     && pip install 'werkzeug<1.0.0' \
