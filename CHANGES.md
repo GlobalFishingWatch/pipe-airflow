@@ -13,7 +13,7 @@ Changelog](https://keepachangelog.com/en/1.0.0/), and this project adheres to
 
 ### Changed
 
-* [GlobalFishingWatch/gfw-eng-tasks#46](https://github.com/GlobalFishingWatch/gfw-eng-tasks/issues/46): Changes
+* [GlobalFishingWatch/gfw-eng-tasks#51](https://github.com/GlobalFishingWatch/gfw-eng-tasks/issues/51): Changes
     version of Airflow from `1.10.5` to `1.10.10`.
 
 ## v1.1.2 - 2020-04-03
