@@ -7,12 +7,12 @@ ENV DEBIAN_FRONTEND noninteractive
 ENV TERM linux
 
 # Airflow configuration
-ENV AIRFLOW_VERSION 1.10.5
+ENV AIRFLOW_VERSION 1.10.10
 ENV AIRFLOW_HOME /usr/local/airflow
 ENV SLUGIFY_USES_TEXT_UNIDECODE=yes
 
 #Airflow-gfw
-ENV AIRFLOW_GFW_VERSION v1.0.1
+ENV AIRFLOW_GFW_VERSION v1.0.2
 
 # Use the docker binary from the other source
 COPY --from=static-docker-source /usr/local/bin/docker /usr/local/bin/docker
@@ -71,7 +71,7 @@ RUN set -ex \
         nano \
     && useradd -ms /bin/bash -u 1001 -d ${AIRFLOW_HOME} airflow \
     && python -m pip install -U pip setuptools wheel \
-    && pip install marshmallow-sqlalchemy==0.17.2 \
+    && pip install marshmallow-sqlalchemy==0.22.3 \
     && pip install Cython \
     && pip install cryptography \
     && pip install pytz \
@@ -79,6 +79,7 @@ RUN set -ex \
     && pip install ndg-httpsclient \
     && pip install pyasn1 \
     && pip install celery[redis] \
+    && pip install sqlalchemy==1.3.15 \
     && pip install apache-airflow[postgres,crypto,celery,jdbc]==$AIRFLOW_VERSION \
     && pip install psycopg2-binary \
     && pip install 'werkzeug<1.0.0' \
