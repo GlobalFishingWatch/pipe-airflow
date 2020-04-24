@@ -9,7 +9,7 @@ Changelog](https://keepachangelog.com/en/1.0.0/), and this project adheres to
 ## [Unreleased]
 
 
-## v1.2.0 - 2020-04-03
+## v1.2.0 - 2020-04-24
 
 ### Changed
 
