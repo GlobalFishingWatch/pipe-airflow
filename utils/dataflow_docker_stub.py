@@ -12,7 +12,7 @@ Python dataflow_docker_stub.py \
     ARGS_FOR_PYTHON MODULE...
 
 This runs the specified module inside the image. The gcp_volume
-directory is mounted for Google authentification. All 
+directory is mounted for Google authentification. All
 other arguments are passed along to the python module
 inside the docker module.
 
@@ -22,8 +22,8 @@ the directory name (or project name if specified) to the name
 used in `docker-compose.yaml`.
 
 Stdout and stderr are captured and logged to LOG_PATH, or
-stdout if that is ommitted. The logs are accumulated in 
-memory, so if we start accumulating enormous logs, we'll 
+stdout if that is ommitted. The logs are accumulated in
+memory, so if we start accumulating enormous logs, we'll
 have to rework the way that is done.
 
 Here are a couple of examples I've been using for testing locally.
@@ -64,21 +64,21 @@ import sys
 def launch(args):
     # Use add_help=False so that underlying module can pass back help.
     parser = argparse.ArgumentParser(add_help=False)
-    parser.add_argument('--startup_log_path', 
+    parser.add_argument('--startup_log_path',
                         help='path to write startup output to (default to stdout)')
     parser.add_argument('--docker_image',
                         required=True,
                         help='name of docker image to invoke')
     parser.add_argument('--gcp_volume',
                         required=True,
-                        help='name of volume with Google Cloud Platform credentials installed') 
+                        help='name of volume with Google Cloud Platform credentials installed')
     parser.add_argument('--python_module',
                         required=True,
                         help='command to be invoked in docker')
 
     options, docker_args = parser.parse_known_args()
 
-    command = ['docker', 'run', '-v', '{}:/root/.config/'.format(options.gcp_volume), 
+    command = ['docker', 'run', '-v', '{}:/root/.config/'.format(options.gcp_volume),
             options.docker_image, 'python', '-m', options.python_module] + docker_args
 
     p = subprocess.Popen(command, stdout=subprocess.PIPE, stderr=subprocess.PIPE)
