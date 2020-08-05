@@ -9,6 +9,14 @@ Changelog](https://keepachangelog.com/en/1.0.0/), and this project adheres to
 ## [Unreleased]
 
 
+## v1.2.2 - 2020-08-04
+
+### Changed
+
+* [GlobalFishingWatch/gfw-eng-tasks#143](https://github.com/GlobalFishingWatch/gfw-eng-tasks/issues/143): Changes
+  * Updates the release version of airflow-gfw to `v1.0.4`.
+  * Increments the Google SDK Version to `300.0.0`.
+
 ## v1.2.1 - 2020-06-05
 
 ### Changed
