@@ -9,112 +9,118 @@ Changelog](https://keepachangelog.com/en/1.0.0/), and this project adheres to
 ## [Unreleased]
 
 
+## v1.2.3 - 2020-11-13
+
+### Added
+
+* [GlobalFishingWatch/gfw-eng-tasks#143](https://github.com/GlobalFishingWatch/gfw-eng-tasks/issues/143): Adds
+  a new method to obtain the nodash version of `source_date_range` in `airflow-gfw`.
+
 ## v1.2.2 - 2020-08-04
 
 ### Changed
 
 * [GlobalFishingWatch/gfw-eng-tasks#143](https://github.com/GlobalFishingWatch/gfw-eng-tasks/issues/143): Changes
-  * Updates the release version of airflow-gfw to `v1.0.4`.
-  * Increments the Google SDK Version to `300.0.0`.
+  Updates the release version of airflow-gfw to `v1.0.4`.
+  Increments the Google SDK Version to `300.0.0`.
 
 ## v1.2.1 - 2020-06-05
 
 ### Changed
 
 * [GlobalFishingWatch/gfw-eng-tasks#105](https://github.com/GlobalFishingWatch/gfw-eng-tasks/issues/105): Changes
-  * Updates the release version of airflow-gfw to `v1.0.3`.
-  * Increments the Google SDK Version to `295.0.0`.
+  Increments the Google SDK Version to `295.0.0`.
 
 ## v1.2.0 - 2020-04-24
 
 ### Changed
 
 * [GlobalFishingWatch/gfw-eng-tasks#51](https://github.com/GlobalFishingWatch/gfw-eng-tasks/issues/51): Changes
-    version of Airflow from `1.10.5` to `1.10.10`.
+  version of Airflow from `1.10.5` to `1.10.10`.
 
 ## v1.1.2 - 2020-04-03
 
 ### Added
 
 * [GlobalFishingWatch/gfw-eng-tasks#46](https://github.com/GlobalFishingWatch/gfw-eng-tasks/issues/46): Adds
-    useful Airflow variables and pool in `initialize.sh` script.
+  useful Airflow variables and pool in `initialize.sh` script.
 
 ## v1.1.1 - 2020-03-31
 
 ### Added
 
 * [GlobalFishingWatch/gfw-eng-tasks#42](https://github.com/GlobalFishingWatch/gfw-eng-tasks/issues/42): Adds
-    support to setup the retries or the timeout for gcs sensor.
+  support to setup the retries or the timeout for gcs sensor.
 
 ## v1.1.0 - 2020-03-12
 
 ### Added
 
 * [GlobalFishingWatch/gfw-eng-tasks#29](https://github.com/GlobalFishingWatch/gfw-eng-tasks/issues/29): Adds
-    library `werkzeug` to version `1.0.0`.
+  library `werkzeug` to version `1.0.0`.
 
 ### Changed
 
 * [GlobalFishingWatch/gfw-eng-tasks#29](https://github.com/GlobalFishingWatch/gfw-eng-tasks/issues/29): Changes
-    library `psycopg2` to `psycopg2-binary`.
+  library `psycopg2` to `psycopg2-binary`.
 
 
 ### Removed
 
 * [GlobalFishingWatch/gfw-eng-tasks#29](https://github.com/GlobalFishingWatch/gfw-eng-tasks/issues/29): Removes
-    the airflow_home variable from airflow config.
+  the airflow_home variable from airflow config.
 
 ## v1.0.7 - 2020-03-11
 
 ### Changed
 
 * [GlobalFishingWatch/gfw-eng-tasks#3](https://github.com/GlobalFishingWatch/gfw-eng-tasks/issues/3): Changed
-    to Python3.7 and airflow-gfw:v1.0.0
+  to Python3.7 and airflow-gfw:v1.0.0
 
 ## v1.0.6 - 2020-01-22
 
 ### Changed
 
 * [GFW-Tasks/issues/1164](https://github.com/GlobalFishingWatch/GFW-Tasks/issues/1164): Changed
-    the `Airflow-GFW` version from `v0.0.6` to `v0.0.7`.
+  the `Airflow-GFW` version from `v0.0.6` to `v0.0.7`.
 
 ## v1.0.5 - 2019-12-19
 
 ### Changed
 
 * [GFW-Tasks/issues/1164](https://github.com/GlobalFishingWatch/GFW-Tasks/issues/1164): Changed
-    the `Airflow-GFW` version from `v0.0.5` to `v0.0.6`.
+  the `Airflow-GFW` version from `v0.0.5` to `v0.0.6`.
 
 ## v1.0.4 - 2019-12-03
 
 ### Changed
 
 * [GFW-Tasks/issues/1164](https://github.com/GlobalFishingWatch/GFW-Tasks/issues/1164): Changed
-    the `Airflow-GFW` version from `v0.0.4` to `v0.0.5`.
+  the `Airflow-GFW` version from `v0.0.4` to `v0.0.5`.
 
 ## v1.0.3 - 2019-11-22
 
 ### Changed
 
 * [GFW-Tasks/issues/1160](https://github.com/GlobalFishingWatch/GFW-Tasks/issues/1160): Changed
-    the `Airflow-GFW` version from `v0.0.3` to `v0.0.4`.
+  the `Airflow-GFW` version from `v0.0.3` to `v0.0.4`.
 
 ## v1.0.2 - 2019-11-21
 
 ### Changed
 
 * [GFW-Tasks/issues/1160](https://github.com/GlobalFishingWatch/GFW-Tasks/issues/1160): Changed
-    the `Apache Airflow` version from `1.10.2` to `1.10.5`.
-    And the `Airflow-GFW` version from `v0.0.2` to `v0.0.3`.
-    And the `Cloud-SDK` version from `248.0.0` to `255.0.0`.
-    Needs to set the variable `SLACK_WEBHOOK_TOKEN` to send notification when a task fails.
+  the `Apache Airflow` version from `1.10.2` to `1.10.5`.
+  And the `Airflow-GFW` version from `v0.0.2` to `v0.0.3`.
+  And the `Cloud-SDK` version from `248.0.0` to `255.0.0`.
+  Needs to set the variable `SLACK_WEBHOOK_TOKEN` to send notification when a task fails.
 
 ## v1.0.1 - 2019-08-13
 
 ### Added
 
 * [GFW-Tasks/issues/1112](https://github.com/GlobalFishingWatch/GFW-Tasks/issues/1112): Adds
-    a validator on the Docker Daemon connection if it is open. If not try at least 10 times.
+  a validator on the Docker Daemon connection if it is open. If not try at least 10 times.
 
 ## v1.0.0 - 2019-08-05
 
