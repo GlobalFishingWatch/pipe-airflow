@@ -9,6 +9,14 @@ Changelog](https://keepachangelog.com/en/1.0.0/), and this project adheres to
 ## [Unreleased]
 
 
+## v1.2.4 - 2020-12-15
+
+### Changed
+
+* [PIPELINE-239](https://globalfishingwatch.atlassian.net/browse/PIPELINE-239): Changes
+  to the new release of `Apache Airflow:1.10.14`(https://github.com/apache/airflow/tree/1.10.14).
+  Updates the `secret_key` from `airflow.cfg`.
+
 ## v1.2.3 - 2020-11-13
 
 ### Added
