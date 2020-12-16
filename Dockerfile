@@ -7,12 +7,12 @@ ENV DEBIAN_FRONTEND noninteractive
 ENV TERM linux
 
 # Airflow configuration
-ENV AIRFLOW_VERSION 1.10.10
+ENV AIRFLOW_VERSION 1.10.14
 ENV AIRFLOW_HOME /usr/local/airflow
 ENV SLUGIFY_USES_TEXT_UNIDECODE=yes
 
 #Airflow-gfw
-ENV AIRFLOW_GFW_VERSION v1.1.0
+ENV AIRFLOW_GFW_VERSION v1.2.0
 
 # Use the docker binary from the other source
 COPY --from=static-docker-source /usr/local/bin/docker /usr/local/bin/docker
