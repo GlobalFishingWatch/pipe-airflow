@@ -12,14 +12,14 @@ ENV AIRFLOW_HOME /usr/local/airflow
 ENV SLUGIFY_USES_TEXT_UNIDECODE=yes
 
 #Airflow-gfw
-ENV AIRFLOW_GFW_VERSION v1.3.0
+ENV AIRFLOW_GFW_VERSION dPIPELINE-393-1
 
 # Use the docker binary from the other source
 COPY --from=static-docker-source /usr/local/bin/docker /usr/local/bin/docker
 
 # Download and install google cloud. See the dockerfile at
 # https://hub.docker.com/r/google/cloud-sdk/~/dockerfile/
-ENV CLOUD_SDK_VERSION 338.0.0
+ENV CLOUD_SDK_VERSION 340.0.0
 RUN apt-get -qqy update && apt-get install -qqy \
         gnupg \
         curl \
